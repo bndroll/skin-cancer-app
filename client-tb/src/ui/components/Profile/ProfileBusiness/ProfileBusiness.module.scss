@@ -1,0 +1,47 @@
+@import "src/styles/var/colors";
+
+.root {}
+
+.title {
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 130%;
+    margin-bottom: 12px;
+
+    span {
+        background: linear-gradient(218.71deg, #00F0FF 10.63%, #FF0ECA 90.97%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-fill-color: transparent;
+    }
+}
+
+.text {
+    font-weight: 400;
+    font-size: 12px;
+
+    &.info {
+        margin-bottom: 24px;
+    }
+}
+
+.conditions {
+    margin-bottom: 24px;
+
+    div {
+        margin-bottom: 4px;
+
+        & .line {
+            text-decoration: line-through;
+        }
+    }
+
+    &_title {
+        font-weight: 600;
+    }
+}
+
+.button {
+    font-size: 14px;
+}

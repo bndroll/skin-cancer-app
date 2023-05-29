@@ -1,0 +1,57 @@
+@import "src/styles/var/colors";
+
+.root {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.user {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 36px auto;
+    grid-column-gap: 10px;
+    grid-row-gap: 6px;
+    grid-template-areas:
+		  "photo username"
+		  "photo status";
+    color: $white;
+    padding-right: 15px;
+    text-decoration: none;
+}
+
+.photo {
+    border-radius: 50%;
+    grid-area: photo;
+}
+
+.username {
+    grid-area: username;
+}
+
+.status {
+    grid-area: status;
+    font-size: 10px;
+
+    span {
+        background-color: $blue-dark;
+        padding: 0 5px 1px;
+        border-radius: 8px;
+    }
+}
+
+.telegramLink {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: $main;
+    padding: 4px 8px;
+    border-radius: 16px;
+
+    span {
+        margin-left: 8px;
+    }
+}

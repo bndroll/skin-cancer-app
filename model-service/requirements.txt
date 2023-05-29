@@ -1,0 +1,8 @@
+Flask~=2.3.2
+tensorflow==2.12
+keras==2.12
+numpy~=1.23.5
+requests~=2.31.0
+Pillow~=9.5.0
+scikit-image~=0.20.0
+python-dotenv==1.0.0

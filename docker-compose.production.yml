@@ -1,0 +1,57 @@
+version: '3'
+services:
+  mongo:
+    image: 'mongo:latest'
+    container_name: skin-cancer-mongo
+    networks:
+      - network
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./data/mongo:/data/db
+    environment:
+      - MONGO_INITDB_DATABASE=${MONGO_DATABASE:?}
+      - MONGO_INITDB_ROOT_USERNAME=${MONGO_USERNAME:?}
+      - MONGO_INITDB_ROOT_PASSWORD=${MONGO_PASSWORD:?}
+    restart: unless-stopped
+
+  model-service:
+    build:
+      context: .
+      dockerfile: model-service/Dockerfile
+    restart: unless-stopped
+    container_name: skin-cancer-model-service
+    ports:
+      - ":5000"
+    networks:
+      - network
+
+  file-service:
+    build:
+      context: .
+      dockerfile: file-service/Dockerfile
+    restart: unless-stopped
+    container_name: skin-cancer-file-service
+    ports:
+      - "5050:5050"
+    networks:
+      - network
+
+  gateway:
+    build:
+      context: .
+      dockerfile: gateway/Dockerfile
+    restart: unless-stopped
+    container_name: skin-cancer-gateway
+    depends_on:
+      - mongo
+      - model-service
+      - file-service
+    ports:
+      - "8080:8080"
+    networks:
+      - network
+
+networks:
+  network:
+    driver: bridge

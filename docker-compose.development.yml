@@ -1,0 +1,20 @@
+version: '3'
+services:
+  mongo:
+    image: 'mongo:latest'
+    container_name: skin-cancer-mongo
+    networks:
+      - network
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./data/mongo:/data/db
+    environment:
+      - MONGO_INITDB_DATABASE=${MONGO_DATABASE:?}
+      - MONGO_INITDB_ROOT_USERNAME=${MONGO_USERNAME:?}
+      - MONGO_INITDB_ROOT_PASSWORD=${MONGO_PASSWORD:?}
+    restart: unless-stopped
+
+networks:
+  network:
+    driver: bridge
