@@ -22,6 +22,9 @@ export class Recognition {
 	diagnosis: Diagnoses;
 
 	@Prop({required: true})
+	value: number;
+
+	@Prop({required: true})
 	createdDate: Date;
 }
 

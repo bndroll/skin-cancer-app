@@ -10,6 +10,7 @@ export class RecognitionMapper {
 	map(recognition: Recognition): RecognitionResponse {
 		return {
 			userId: recognition.userId,
+			value: recognition.value,
 			diagnosis: Diagnoses[recognition.diagnosis],
 			fileUrl: recognition.fileUrl,
 			createdDate: recognition.createdDate
@@ -20,6 +21,7 @@ export class RecognitionMapper {
 		return recognitions.map(item => ({
 			userId: item.userId,
 			diagnosis: Diagnoses[item.diagnosis],
+			value: item.value,
 			fileUrl: item.fileUrl,
 			createdDate: item.createdDate
 		}));

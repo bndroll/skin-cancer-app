@@ -1,4 +1,4 @@
-import { Inject, Injectable, OnApplicationBootstrap } from '@nestjs/common';
+import { BadRequestException, Inject, Injectable, OnApplicationBootstrap } from '@nestjs/common';
 import TelegramBot from 'node-telegram-bot-api';
 import { UserRepository } from './repository/user.repository';
 import { UserBotInterface } from './interfaces/user-bot.interface';
@@ -6,6 +6,7 @@ import { RecognitionRepository } from './repository/recognition.repository';
 import { HttpService } from '@nestjs/axios';
 import { ConfigService } from '@nestjs/config';
 import * as FormData from 'form-data';
+import { UserBotErrorMessages } from './user.constants';
 
 @Injectable()
 export class UserService implements OnApplicationBootstrap {
@@ -36,6 +37,11 @@ export class UserService implements OnApplicationBootstrap {
 	}
 
 	async createRecognition(file: Express.Multer.File, userData: UserBotInterface) {
+		const lastRecognitions = 10 - (await this.recognitionRepository.findMonthRecognitions(userData.id));
+		if (lastRecognitions === 0) {
+			throw new BadRequestException(UserBotErrorMessages.MaxMonthRecognitionsCount);
+		}
+
 		const formData = new FormData();
 		formData.append('file', Buffer.from(file.buffer), file.originalname);
 		const fileUrl = (await this.httpService.axiosRef.post<{ url: string }>(
@@ -52,7 +58,8 @@ export class UserService implements OnApplicationBootstrap {
 		return await this.recognitionRepository.create({
 			userId: userData.id,
 			fileUrl: fileUrl,
-			recId: modelRes.index
+			recId: modelRes.index,
+			value: modelRes.max,
 		});
 	}
 

@@ -1,0 +1,82 @@
+@import "src/styles/var/colors";
+
+.root {
+    font-weight: 600;
+    position: relative;
+}
+
+.instruction {
+    font-weight: 300;
+    margin-bottom: 20px;
+}
+
+.fileInput {
+    background-color: #3b1b04;
+    padding: 6px 10px;
+    border-radius: 6px;
+    color: $white;
+    margin-bottom: 10px;
+}
+
+.image {
+    border-radius: 6px;
+    border: 1px solid #3b1b04;
+    margin-bottom: 10px;
+}
+
+.submit {
+    display: block;
+    border-radius: 6px;
+    padding: 18px 30px;
+    outline: none;
+    color: $white;
+    background-color: #3b1b04;
+    border: none;
+    cursor: pointer;
+    transition: all .15s linear;
+
+    &:hover {
+        background-color: #210f02;
+    }
+}
+
+.recognitionsLeft {
+    background-color: $skin;
+    border-radius: 6px;
+    padding: 6px;
+}
+
+.modal {
+    position: absolute;
+    background-color: $skin;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 6px;
+    padding: 6px;
+    border: 1px dashed $black;
+    cursor: pointer;
+
+    span {
+        color: $black;
+        font-size: 12px;
+        font-weight: 300;
+    }
+
+    button {
+        width: 20px;
+        height: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: none;
+        outline: none;
+        background-color: transparent;
+        cursor: pointer;
+    }
+}

@@ -1,0 +1,32 @@
+@import "src/styles/var/colors";
+
+.root {
+    font-weight: 600;
+}
+
+.historyItem {
+    display: flex;
+    margin-bottom: 10px;
+    padding: 6px;
+    cursor: pointer;
+    transition: all .15s linear;
+
+    &:hover {
+        background-color: rgba(0, 0, 0, 0.02);
+        transform: scale(1.02);
+    }
+
+    .itemImage {
+        border-radius: 6px;
+        margin-right: 10px;
+    }
+
+    .itemInfo {
+        .itemRec {
+            display: inline-block;
+            font-size: 20px;
+            margin-bottom: 5px;
+            background-color: $skin;
+        }
+    }
+}

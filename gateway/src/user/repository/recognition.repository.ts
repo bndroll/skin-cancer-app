@@ -8,11 +8,12 @@ export class RecognitionRepository {
 	constructor(@InjectModel(Recognition.name) private readonly recognitionModel: Model<Recognition>) {
 	}
 
-	async create(createRecognitionDto: { userId: number, fileUrl: string, recId: number }) {
+	async create(createRecognitionDto: { userId: number, fileUrl: string, recId: number, value: number }) {
 		const savedRecognition = await new this.recognitionModel({
 			userId: createRecognitionDto.userId,
 			fileUrl: createRecognitionDto.fileUrl,
 			diagnosis: createRecognitionDto.recId,
+			value: createRecognitionDto.value,
 			createdDate: new Date()
 		});
 		return await savedRecognition.save();

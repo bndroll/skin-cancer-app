@@ -1,0 +1,40 @@
+@import "src/styles/var/colors";
+
+.root {
+    font-weight: 600;
+}
+
+.images {
+    margin-bottom: 20px;
+}
+
+.slider {
+    height: 50%;
+}
+
+.slide {
+    width: 200px;
+    height: 200px;
+}
+
+.pagination {
+    span {
+        background: #4d3705 !important;
+    }
+}
+
+.img {
+    border-radius: 10px;
+}
+
+.title {
+    font-size: 30px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    display: inline-block;
+    background-color: $skin;
+}
+
+.info {
+    font-weight: 300;
+}
