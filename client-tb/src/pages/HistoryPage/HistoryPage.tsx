@@ -28,6 +28,7 @@ const HistoryPage: React.FC = () => {
 
 	return (
 		<div className={styles.root}>
+			<div className={styles.ttl}>Прогнозы хранятся 30 дней</div>
 			{
 				recognitions.map(item => (
 					<div className={styles.historyItem} onClick={() => onClickHandler(item.fileUrl)}>
