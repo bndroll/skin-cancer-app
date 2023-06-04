@@ -1,3 +1,5 @@
+import { Express } from 'express';
+
 export class MFile {
 	originalname: string;
 	buffer: Buffer;

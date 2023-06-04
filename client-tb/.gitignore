@@ -2,6 +2,7 @@
 
 .idea
 .env
+/ssl
 
 # dependencies
 /node_modules

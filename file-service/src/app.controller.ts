@@ -4,7 +4,7 @@ import { FileInterceptor } from '@nestjs/platform-express';
 import { FileElementResponse } from './dto/file-element.response';
 import { MFile } from './dto/mfile.class';
 import { v4 as uuid } from 'uuid';
-import { Response } from 'express';
+import { Express, Response } from 'express';
 
 @Controller()
 export class AppController {

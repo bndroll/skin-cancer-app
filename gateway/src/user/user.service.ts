@@ -7,6 +7,7 @@ import { HttpService } from '@nestjs/axios';
 import { ConfigService } from '@nestjs/config';
 import * as FormData from 'form-data';
 import { UserBotErrorMessages } from './user.constants';
+import { Express } from 'express';
 
 @Injectable()
 export class UserService implements OnApplicationBootstrap {
@@ -42,6 +43,7 @@ export class UserService implements OnApplicationBootstrap {
 			throw new BadRequestException(UserBotErrorMessages.MaxMonthRecognitionsCount);
 		}
 
+		console.log(this.configService.get('FILE_SERVICE_URL'));
 		const formData = new FormData();
 		formData.append('file', Buffer.from(file.buffer), file.originalname);
 		const fileUrl = (await this.httpService.axiosRef.post<{ url: string }>(
@@ -49,10 +51,11 @@ export class UserService implements OnApplicationBootstrap {
 				formData,
 				{headers: formData.getHeaders()})
 		).data.url;
+		console.log(fileUrl);
 
 		const modelRes = (await this.httpService.axiosRef.post<{ max: number, index: number }>(
 				`${this.configService.get('MODEL_SERVICE_URL')}/predict`,
-				{url: `${this.configService.get('FILE_SERVICE_URL')}/${fileUrl.split('/').slice(3).join('/')}`})
+				{url: fileUrl})
 		).data;
 
 		return await this.recognitionRepository.create({

@@ -1,6 +1,6 @@
 import { Controller, Get, Param, Post, Res, UploadedFile, UseGuards, UseInterceptors } from '@nestjs/common';
 import { UserService } from './user.service';
-import { Response } from 'express';
+import { Express, Response } from 'express';
 import { UserBotData } from './decorators/customer-bot-data.decorator';
 import { UserBotInterface } from './interfaces/user-bot.interface';
 import { TelegramInitDataGuard } from './guards/telegram-init-data.guard';
@@ -21,6 +21,7 @@ export class UserController {
 	@Post()
 	@UseGuards(TelegramInitDataGuard)
 	async setCustomer(@UserBotData() userData: UserBotInterface): Promise<UserResponse> {
+		console.log('test1');
 		const user = await this.userService.findById(userData.id);
 		if (!user) {
 			return await this.userMapper.map(await this.userService.create(userData));

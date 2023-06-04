@@ -6,6 +6,8 @@ import { UserModule } from './user/user.module';
 import { getMongoConfig } from './config/mongo.config';
 import { MongooseModule } from '@nestjs/mongoose';
 import { ScheduleModule } from '@nestjs/schedule';
+import { APP_INTERCEPTOR } from '@nestjs/core';
+import { LoggingInterceptor } from './interceptors/logging.interceptor';
 
 @Module({
 	imports: [
@@ -18,7 +20,13 @@ import { ScheduleModule } from '@nestjs/schedule';
 		UserModule
 	],
 	controllers: [AppController],
-	providers: [AppService]
+	providers: [
+		AppService,
+		{
+			provide: APP_INTERCEPTOR,
+			useClass: LoggingInterceptor
+		}
+	]
 })
 export class AppModule {
 }

@@ -32,6 +32,8 @@ services:
       dockerfile: file-service/Dockerfile
     restart: unless-stopped
     container_name: skin-cancer-file-service
+    volumes:
+      - ./data/file-service:/app/uploads
     ports:
       - "5050:5050"
     networks:
@@ -49,6 +51,20 @@ services:
       - file-service
     ports:
       - "8080:8080"
+    networks:
+      - network
+
+  client-tb:
+    build:
+      context: .
+      dockerfile: client-tb/Dockerfile
+    restart: unless-stopped
+    container_name: skin-cancer-client-tb
+    ports:
+      - "80:80"
+      - "443:443"
+    env_file:
+      - client-tb/.env
     networks:
       - network
 

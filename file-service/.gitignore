@@ -4,6 +4,7 @@
 .development.env
 .production.env
 /uploads
+/secrets
 
 # Logs
 logs
