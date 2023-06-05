@@ -14,7 +14,6 @@ export class UserMapper {
 		return {
 			telegramId: user.telegramId,
 			name: user.name,
-			username: user.username,
 			createdDate: user.createdDate,
 			recognitionsLeft: this.configService.get('MONTH_RECOGNITIONS_COUNT') - (await this.recognitionRepository.findMonthRecognitions(user.telegramId)),
 		};

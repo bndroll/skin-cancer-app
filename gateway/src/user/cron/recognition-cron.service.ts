@@ -4,7 +4,7 @@ import { RecognitionRepository } from '../repository/recognition.repository';
 import { UserService } from '../user.service';
 
 @Injectable()
-export class UrlCronService {
+export class RecognitionCronService {
 	constructor(
 		private readonly recognitionRepository: RecognitionRepository,
 		private readonly userService: UserService

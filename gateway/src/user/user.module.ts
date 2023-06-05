@@ -11,7 +11,7 @@ import { UserMapper } from './dto/mappers/user.mapper';
 import { RecognitionRepository } from './repository/recognition.repository';
 import { RecognitionMapper } from './dto/mappers/recognition.mapper';
 import { HttpModule } from '@nestjs/axios';
-import { UrlCronService } from './cron/url-cron.service';
+import { RecognitionCronService } from './cron/recognition-cron.service';
 
 @Module({
 	imports: [
@@ -29,7 +29,7 @@ import { UrlCronService } from './cron/url-cron.service';
 		UserMapper,
 		RecognitionRepository,
 		RecognitionMapper,
-		UrlCronService,
+		RecognitionCronService,
 		{
 			provide: 'TGBOT',
 			inject: [ConfigService],

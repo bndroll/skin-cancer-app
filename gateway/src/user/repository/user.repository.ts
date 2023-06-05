@@ -13,7 +13,6 @@ export class UserRepository {
 		const savedUser = await new this.userModel({
 			telegramId: userData.id,
 			name: `${userData.firstName} ${userData.lastName ?? ''}`.trim(),
-			username: userData.username,
 			createdDate: new Date(),
 		});
 		return await savedUser.save();
@@ -26,7 +25,6 @@ export class UserRepository {
 	async update(telegramId: number, userData: UserBotInterface) {
 		return await this.userModel.findOneAndUpdate({telegramId}, {
 			telegramId: userData.id,
-			username: userData.username,
 			name: `${userData.firstName} ${userData.lastName ?? ''}`.trim()
 		}).exec();
 	}
