@@ -13,7 +13,7 @@ export class AppController {
 
 	@Post()
 	@HttpCode(200)
-	@UseInterceptors(FileInterceptor('file'))
+	@UseInterceptors(FileInterceptor('file', { limits: { fileSize: 25 * 1024 ** 2 } }))
 	async uploadImage(@UploadedFile() file: Express.Multer.File): Promise<FileElementResponse> {
 		const buffer = await this.appService.convertToWebP(file.buffer);
 		const saveFile: MFile = (new MFile({

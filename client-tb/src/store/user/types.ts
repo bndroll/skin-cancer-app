@@ -18,7 +18,6 @@ export interface IUserSliceItem extends IUserResponse {
 
 export interface IUserResponse {
 	telegramId: number;
-	username: string;
 	name: string;
 	createdDate: Date;
 	recognitionsLeft: number;

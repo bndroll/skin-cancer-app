@@ -42,7 +42,9 @@ export class UserController {
 
   @Post('recognition')
   @UseGuards(TelegramInitDataGuard)
-  @UseInterceptors(FileInterceptor('file'))
+  @UseInterceptors(
+    FileInterceptor('file', { limits: { fileSize: 25 * 1024 ** 2 } }),
+  )
   async createRecognition(
     @UploadedFile() file: Express.Multer.File,
     @UserBotData() userData: UserBotInterface,

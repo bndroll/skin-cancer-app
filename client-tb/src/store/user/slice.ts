@@ -28,7 +28,6 @@ const userSlice = createSlice({
 				name: action.payload.name,
 				telegramId: action.payload.telegramId,
 				createdDate: action.payload.createdDate,
-				username: action.payload.username,
 				recognitionsLeft: action.payload.recognitionsLeft,
 				pictureUrl: `${process.env.REACT_APP_GATEWAY_URL}/user/photo/${action.payload.telegramId}`
 			};
@@ -39,7 +38,6 @@ const userSlice = createSlice({
 				name: action.payload.name,
 				telegramId: action.payload.telegramId,
 				createdDate: action.payload.createdDate,
-				username: action.payload.username,
 				recognitionsLeft: action.payload.recognitionsLeft,
 				pictureUrl: `${process.env.REACT_APP_GATEWAY_URL}/user/photo/${action.payload.telegramId}`
 			};
